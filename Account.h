@@ -1,16 +1,24 @@
 // Factory pattern
 #pragma once
 #include <string>
-#include "Transact.h"
+#include "Transaction.h"
+#include <vector>
 // Account pattern
 class Account
 {
 public:
-public:
 	virtual ~Account() {}
 	virtual std::string Operation() const = 0;
-private:
+
+	virtual float getBalance() const = 0;
+	virtual void setBalance(float) const = 0;
+
+	virtual void withdraw(float) const = 0;
+	virtual void deposite(float) const = 0;
+	virtual void transfer(float) const = 0;
+protected:
 	float m_balance;
+	std::vector<Transaction*> m_history;
 };
 
 class SavingsAccount : public Account {

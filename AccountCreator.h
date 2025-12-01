@@ -1,16 +1,16 @@
 #pragma once
 #include "Account.h";
 
-class Creator {
+class AccountCreator {
 public:
-	virtual ~Creator() {};
+	virtual ~AccountCreator() {};
 	virtual Account* FactoryMethod() const = 0;
 };
 
-class ConcreteSavingsAccountCreator : public Creator {
+class ConcreteSavingsAccountCreator : public AccountCreator {
 
 };
 
-class ConcreteCheckingAccountCreator : public Creator {
+class ConcreteCheckingAccountCreator : public AccountCreator {
 
 };
