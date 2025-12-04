@@ -8,9 +8,15 @@ public:
 };
 
 class ConcreteSavingsAccountCreator : public AccountCreator {
-
+public:
+	Account* FactoryMethod() const override {
+		return new SavingsAccount();
+	}
 };
 
 class ConcreteCheckingAccountCreator : public AccountCreator {
-
+public:
+	Account* FactoryMethod() const override {
+		return new CheckingAccount();
+	}
 };

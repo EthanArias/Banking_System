@@ -1,7 +1,6 @@
 #pragma once
 #include <string>
-#include "AccountCreator.h"
-
+#include "Bank.h"
 class Customer
 {
 public:
