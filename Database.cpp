@@ -1,11 +1,11 @@
-#include "Bank.h"
+#include "Database.h"
 
-Bank* Bank::GetInstance(const std::string& value)
+Database* Database::GetInstance(const std::string& value)
 {
     std::lock_guard<std::mutex> lock(s_mutex);
     if (s_instance == nullptr)
     {
-        s_instance = new Bank(value);
+        s_instance = new Database();
     }
     return s_instance;
 }
