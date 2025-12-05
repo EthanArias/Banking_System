@@ -38,7 +38,7 @@ public:
 	void deposit(float amount) override;
 	void transfer(float amount,Account* other) override;
 private:
-	void setBalance(float amount) override;
+	void setBalance(float amount);
 };
 
 class CheckingAccount : public Account {
@@ -51,5 +51,5 @@ public:
 	void deposit(float amount) override;
 	void transfer(float amount, Account* other) override;
 private:
-	void setBalance(float amount) override;
+	void setBalance(float amount);
 };
