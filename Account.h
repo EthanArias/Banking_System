@@ -15,24 +15,30 @@ public:
 	virtual void setBalance(float) = 0;
 
 	virtual void withdraw(float) = 0;
-	virtual void deposite(float) = 0;
+	virtual void deposit(float) = 0;
 	virtual void transfer(float, Account*) = 0;
 protected:
+	friend Invoker;
 	Invoker* m_invoker;
 	float m_balance;
 	std::vector<Transaction*> m_history;
+private:
+	void setBalance(float amount) { // made private so only the invoker can use it
+		m_balance = amount;
+	}
 };
 
 class SavingsAccount : public Account {
 public:
 	SavingsAccount();
 
-	virtual float getBalance() const override;
-	virtual void setBalance(float amount) override;
+	float getBalance() const override;
 
-	virtual void withdraw(float amount) override;
-	virtual void deposite(float amount) override;
-	virtual void transfer(float amount,Account* other) override;
+	void withdraw(float amount) override;
+	void deposit(float amount) override;
+	void transfer(float amount,Account* other) override;
+private:
+	void setBalance(float amount) override;
 };
 
 class CheckingAccount : public Account {
@@ -40,9 +46,10 @@ public:
 	CheckingAccount();
 
 	float getBalance() const override;
-	void setBalance(float amount) override;
 
 	void withdraw(float amount) override;
-	void deposite(float amount) override;
+	void deposit(float amount) override;
 	void transfer(float amount, Account* other) override;
+private:
+	void setBalance(float amount) override;
 };
